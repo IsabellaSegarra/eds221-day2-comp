@@ -94,3 +94,52 @@ fruit [1,2]
 fruit[,2]
 
 fruit [2, 1] <- "pineapple"
+
+# select multiple elements
+ x <- 1:10
+ x[c(3,1,5)]
+x[c(1,1,1)]
+x[c(1.2, 5.4, 7.2)]
+
+# exclude elements with negative integers
+x[-10] #removes the 10
+x[-c(2,4,6,8,10)]
+x[c(-1,2)]
+
+# logical vectors
+x[c(TRUE, FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, TRUE)] #TRUE means keep FALSE means throw away
+
+x[x > 3]
+
+x[] #it is the original vector because nothing was stored
+
+# Subsetting and assigning multiple values
+
+x <- 1:5
+x
+x[c(1, 2)] <- 2:3
+
+x[-1] <- 4:1
+x
+
+# Subset rows in data frames based on conditions (logical subsetting)
+mtcars[mtcars$gear == 5, ]
+
+mtcars[mtcars$gear == 5 & mtcars$cyl == 4, ]
+
+
+#Shorthand version using the subset function
+subset(mtcars, gear == 5 & cyl == 4)
+subset(mtcars, gear ==5)
+
+#remove columns
+
+df <- data.frame(x = 1:3,
+                 y= 3:1,
+                 z= c("a", "b", "c"))
+
+df$z <- NULL
+
+df<- df[c("x", "y")]
+df[setdiff(names(df), "z")]
+df
